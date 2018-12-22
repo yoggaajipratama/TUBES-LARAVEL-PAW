@@ -1,0 +1,199 @@
+	/*added*/
+	/*index.php*/
+	html, body{
+		scroll-behavior: smooth;
+		font-family: 'Open Sans', sans-serif;
+	}
+	.navbar1{
+		background-color: green;
+		width: 100%;
+		top: 0;
+		padding-top: 9px;
+		padding-right: 40px;
+		position: fixed;
+		scroll-behavior: smooth;
+		overflow: hidden;
+		height: 40px;
+		text-align: right;
+	}
+	.a1{
+		color: #fff;
+		font-weight: bold;
+		text-decoration: none;
+		scroll-behavior: smooth;
+	}
+	a:hover{
+		color: red;
+		text-decoration: none;
+		scroll-behavior: smooth;
+	}
+	.jumbotron-fluid{
+		background-image: url("../images/img2.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		margin-top: 40px;
+		height: 950px;
+		padding-top: 200px;	
+		scroll-behavior: smooth;
+	}
+	.header{
+		color: white;
+		text-align: center;
+		overflow: hidden;
+		font-size: 70pt;
+		scroll-behavior: smooth;
+		text-shadow: 4px 4px 4px #000000;
+	}
+	.box{
+		scroll-behavior: smooth;
+		border: solid;
+		border-color: white;
+		background-color: transparent;
+		box-shadow: 4px 4px 4px #000000;
+	}
+	.get{
+		font-size: 13pt;
+		color: black;
+	}
+	.get:hover{
+		font-size: 12.5pt;
+		color: red;
+	}
+	.animation{
+		scroll-behavior: smooth;
+		width: 64px;
+		height: 64px;
+	}
+	#isi{
+		border: solid;
+		padding: 10px;
+		margin-top: 30px;
+		margin-left: 60px;
+		margin-right: auto;
+		scroll-behavior: smooth;
+		-webkit-column-count: 4;
+	    -moz-column-count: 4;
+	    scroll-behavior: smooth;
+	    column-count: 4;
+	}
+	#about{
+		width: 325px;
+		scroll-behavior: smooth;
+		margin-left: 70%;
+	}
+	.about-img{
+		border-radius: 50%;
+		width: 320px;
+		height: 320px;
+		border: solid;
+		scroll-behavior: smooth;
+		box-shadow: 7px 8px green;
+	}
+	.about-text{
+		margin-top: -170px;
+		width: 50%;
+		margin-left: 20%;
+		font-size: 20pt;
+		scroll-behavior: smooth;
+	}
+	#contact{
+		padding-top: 350px;
+		padding-bottom: 80px;
+	}
+
+	/*report.php*/
+	#contrib{
+		background-image: url("../images/img2.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		margin-top: 10%;
+		height: 100%;
+		scroll-behavior: smooth;
+	}
+	.form{
+		/*background-color: #7cb5c7;*/
+		background-color: white;
+		border-radius: 30px;
+		border: solid;
+		width: 500px;
+	}
+	table{
+		text-align: left;
+		margin-top: 40px;
+	}
+	.inputreport{
+		border: solid;
+		text-align: left;
+	}
+	.portal{
+		margin-top: 10%;
+		border-radius: 30px;
+		text-align: center;
+		font-family: Ubuntu;
+		width: 330px;
+		height: 370px;
+		background-color: white;
+		border: solid;
+	}
+	.nama{
+		padding: 5px;
+		color: black;
+		border-color: black;
+		border: solid;
+	}
+	.username{
+		padding: 5px;
+		color: black;
+		border-color: black;
+		border: solid;
+	}
+	.password{
+		padding: 5px;
+		color: black;
+		border-color: black;
+		border: solid;
+	}
+	.submit{
+		background-color: #4CAF50; /* Green */
+	    border: none;
+	    color: white;
+	    padding: 20px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 16px;
+	    margin-bottom: 90px;
+	    cursor: pointer;
+	}
+	.submit:hover{
+		color: white;
+		background-color: grey;
+		font-family: Ubuntu;
+	}
+	.create{
+		color: black;
+		text-decoration: none;
+	}
+	.create:hover{
+		color: red;
+		text-decoration: none;
+	}
+
+	/*footer*/
+	#footer2 {
+		background: #f6f6f6;
+		padding: 30px 0;
+		margin: 30px 0 0 0;
+	}
+	#footer2 p {
+		color: #888;
+		font-size: 14px;
+	}
+	#footer2 a {
+		color: #608dfd;
+	}
+	#footer2 a:hover {
+		border-bottom: 2px solid #608dfd;
+	}
