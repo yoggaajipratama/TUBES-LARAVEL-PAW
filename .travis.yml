@@ -1,23 +1,23 @@
-sudo: required
 language: php
-os: trusty
-php:
-  - 7.2
-  
-#branche yg digunakan
-branches:
-  only:
-    - master #-> QA/Staging server
 
-# install Environment di OS
-# test
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+
 before_script:
   - cp .env.travis .env
-  - composer install --no-interaction
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
   - php artisan key:generate
+  - php artisan jwt:generate
+  - php artisan migrate
 
-# Main Exception (Build)
+before_install:
+  - mysql -e 'CREATE DATABASE mpr;'
+
 script:
-  - ./vendor/bin/phpunit
+  - phpunit
 
-after_success:
+services:
+  - mysql
