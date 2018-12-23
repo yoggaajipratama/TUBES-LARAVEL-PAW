@@ -1,8 +1,7 @@
+sudo: required
+os: trusty
 language: php
-
 php:
-  - 7.0
-  - 7.1
   - 7.2
 
 before_script:
@@ -17,7 +16,7 @@ before_install:
   - mysql -e 'CREATE DATABASE mpr;'
 
 script:
-  - phpunit
+  - ./vendor/bin/phpunit
 
 services:
   - mysql
