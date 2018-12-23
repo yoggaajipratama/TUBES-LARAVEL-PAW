@@ -15,7 +15,7 @@
                     @endif
 
                     <div class="panel-body">
-                        Anda adalah admin <br>
+                        Anda adalah administrator <br>
                         Nama  :  {{ Auth::user()->name }} <br>
                         Email : {{ Auth::user()->email }} <br>
                     </div>
