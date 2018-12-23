@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Report;
+use App\Price;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -28,10 +31,25 @@ class HomeController extends Controller
 
             return view('home');
         }
-        else if(Auth::user()->jabatan == 'MEMBER')
-        {
-
-            return view('report');
+        else{
+            
+            $pasar = DB::table('pasar')->get();
+            $produk = DB::table('price')->get();
+            return view('report',['pasar' => $pasar,'report','produk' => $produk]);
         }
+    }
+
+    public function member()
+    {
+        if(Auth::user()->jabatan == 'ADMIN'){
+            return redirect('home');
+        }
+        else{
+            
+            $pasar = DB::table('pasar')->get();
+            $produk = DB::table('price')->get();
+            return view('report',['pasar' => $pasar,'produk' => $produk]);
+        }
+
     }
 }

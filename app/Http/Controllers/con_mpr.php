@@ -18,13 +18,6 @@ class con_mpr extends Controller
     	return view(''.$id);
     }
 
-    public function report(){
-        /*if(!Session::get('login')){
-            return redirect('login');
-        }*/
-        return view('report');
-    }
-
     public function logout(){
         Session::flush();
         return redirect('login');
@@ -46,7 +39,7 @@ class con_mpr extends Controller
             }
         }
         else{
-            return redirect('login')->with('alert','Password atau Email, Salahaa!');
+            return redirect('login')->with('alert','Password atau Email, Salah!');
         }
     }
 

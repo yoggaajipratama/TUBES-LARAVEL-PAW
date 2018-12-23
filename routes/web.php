@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-
 Route::get('/newaccount', function () {
     return view('newaccount');
 });
@@ -25,7 +20,8 @@ Route::get('/','con_mpr@index');
 Route::group(['middleware' => 'revalidate'], function()
 {
 	Auth::routes();
-
 	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/member', 'HomeController@member');
+	Route::post('/report', 'con_report@save')->name('report');
 });
 

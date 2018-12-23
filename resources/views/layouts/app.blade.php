@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
 </head>
 <body>
     <div id="app">
@@ -27,7 +28,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Home') }}
+                    {{ config('Market Price Report.name', 'Market Price Report') }}
                 </a>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

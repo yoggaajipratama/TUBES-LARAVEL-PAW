@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row {{$errors->has('jabatan')? 'has-error': ''}}">
+                       <!--  <div class="form-group row {{$errors->has('jabatan')? 'has-error': ''}}">
                             <label class="col-md-4 col-form-label text-md-right">Jabatan</label>
                             <div class="col-md-6">
                                 <select name="jabatan" class="form-control">
@@ -69,7 +69,7 @@
                                     <option value="MEMBER">MEMBER</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

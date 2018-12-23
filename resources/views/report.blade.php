@@ -1,70 +1,173 @@
 @extends('layouts.app')
-@section('title','Halaman pengguna');
+@section('title','Report');
 @section('content')
-<form action="{{url('auth/report')}}" method="post" enctype="multipart/form-data">
-        <center>
-            <div class="form">
-                <h2>FORM PENGADUAN</h2>
-                <table>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Report') }}</div>
 
-                    <tr class="baris1">
-                        <th>Nama lengkap</th>
-                        <td>
-                            <input type="text" name="nama" autocomplete="off" class="inputreport">
-                        </td>
-                    </tr>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('report') }}">
+                        @csrf
 
-                    <tr class="baris2">
-                        <th>Nomor KTP</th>
-                        <td><input type="text" name="ktp" autocomplete="off" class="inputreport"></td>
-                    </tr>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
 
-                    <tr class="baris3">
-                        <th>Nama produk</th>
-                        <td>
-                            <input type="text" name="nampro" autocomplete="off" class="inputreport">
-                        </td>
-                    </tr>
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
-                    <tr class="baris4">
-                        <th>Foto produk</th>
-                        <td>
-                            <?php echo "<input type='file' name='userfile' size='20' />"; ?>
-                        </td>
-                    </tr>
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-                    <tr class="baris5">
-                        <th>Alamat kejadian</th>
-                        <td>
-                            <textarea name="alamat" autocomplete="off" class="inputreport"></textarea>
-                        </td>
-                    </tr>
-                    
-                    <tr class="baris6">
-                        <th>Tanggal kejadian</th>
-                        <td><input type="date" name="tgl" class="inputreport" min="2018-01-01"></td>
-                    </tr>
-                    
-                    <tr class="baris7">
-                        <th>Harga</th>
-                        <td>
-                            <input type="text" name="harga" class="inputreport" autocomplete="off" min="0" max="1000000000" placeholder="Rp.">
-                        </td>
-                    </tr>
+                        <div class="form-group row">
+                            <label for="no_ktp" class="col-md-4 col-form-label text-md-right">{{ __('Nomor KTP') }}</label>
 
-                    <tr class="baris8">
-                        <th>Keterangan</th>
-                        <td>
-                            <textarea name="ket" class="inputreport"></textarea>
-                        </td>
-                    </tr>
-                </table>
-                <div>
-                    <center>
-                        <input type="submit" name="submit" value="Upload" class="submit">
-                    </center>
+                            <div class="col-md-6">
+                                <input id="no_ktp" type="text" class="form-control{{ $errors->has('no_ktp') ? ' is-invalid' : '' }}" name="no_ktp" value="{{ old('no_ktp') }}" required>
+
+                                @if ($errors->has('no_ktp'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('no_ktp') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="no_tlp" class="col-md-4 col-form-label text-md-right">{{ __('Nomor Telp') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="no_tlp" type="text" class="form-control{{ $errors->has('no_tlp') ? ' is-invalid' : '' }}" name="no_tlp" required>
+
+                                @if ($errors->has('no_tlp'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('no_tlp') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nampro" class="col-md-4 col-form-label text-md-right">{{ __('Produk') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="nampro">
+                                    @foreach($produk as $nama)
+                                        <option value="{{$nama->nama_produk}}">{{$nama->nama_produk}}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('nampro'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('nampro') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="harga" class="col-md-4 col-form-label text-md-right">{{ __('Harga') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="harga" type="text" class="form-control{{ $errors->has('harga') ? ' is-invalid' : '' }}" name="harga" required>
+
+                                @if ($errors->has('harga'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('harga') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="tgl_kej" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Kejadian') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tgl_kej" type="date" class="form-control{{ $errors->has('tgl_kej') ? ' is-invalid' : '' }}" name="tgl_kej" required>
+
+                                @if ($errors->has('tgl_kej'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('tgl_kej') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="alamat" class="col-md-4 col-form-label text-md-right">{{ __('Alamat') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="alamat">
+                                    @foreach($pasar as $nama)
+                                        <option value="{{$nama->nama_pasar}}">{{$nama->nama_pasar}}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('alamat'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('alamat') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="ket" class="col-md-4 col-form-label text-md-right">{{ __('Keterangan') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea id="ket" type="text" class="form-control{{ $errors->has('ket') ? ' is-invalid' : '' }}" name="ket" required></textarea>
+
+                                @if ($errors->has('harga'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('ket') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="file_gambar" class="col-md-4 col-form-label text-md-right">{{ __('Foto') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" id="file_gambar" name="file_gambar">
+
+                                @if ($errors->has('file_gambar'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('file_gambar') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                       <!--  <div class="form-group row {{$errors->has('jabatan')? 'has-error': ''}}">
+                            <label class="col-md-4 col-form-label text-md-right">Jabatan</label>
+                            <div class="col-md-6">
+                                <select name="jabatan" class="form-control">
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="MEMBER">MEMBER</option>
+                                </select>
+                            </div>
+                        </div> -->
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Report') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </center>
-    </form>
+        </div>
+    </div>
+</div>
 @endsection

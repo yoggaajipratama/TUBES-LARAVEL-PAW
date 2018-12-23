@@ -98,18 +98,18 @@
               <th><center><h3>Harga</h3></center></th>
               <th><center><h3>Report</h3></center></th>
             </tr>
-            <td>
               @foreach($user as $nama)
               <tr>
                 <?php for ($i=1; $i <= 1; $i++) { ?>
                   <td>{{$nama->id}}</td>
                   <td>{{$nama->nama_produk}}</td>
-                  <td>Rp. {{$nama->harga}}</td>
-                  <td><center><a href="">report</a></center></td>
+                  <td>
+                    <div class="text-center">Rp. {{$nama->harga}}</div>
+                  </td>
+                  <td><center><a href="{{route('home')}}" class="link_report">report</a></center></td>
                 <?php }?>
               </tr>
               @endforeach
-            </td>
           </table>
         </center>
       </div>
