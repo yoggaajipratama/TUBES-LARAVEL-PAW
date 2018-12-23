@@ -1,0 +1,23 @@
+sudo: required
+language: php
+os: trusty
+php:
+  - 7.2
+  
+#branche yg digunakan
+branches:
+  only:
+    - master #-> QA/Staging server
+
+# install Environment di OS
+# test
+before_script:
+  - cp .env.travis .env
+  - composer install --no-interaction
+  - php artisan key:generate
+
+# Main Exception (Build)
+script:
+  - ./vendor/bin/phpunit
+
+after_success:
