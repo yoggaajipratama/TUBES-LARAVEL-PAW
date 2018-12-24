@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'marketpricereport@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'marketpricereport'),
+        'address' => env('MAIL_FROM_ADDRESS', 'yoggaajipratama999@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'yoggaajipratama'),
     ],
 
     /*

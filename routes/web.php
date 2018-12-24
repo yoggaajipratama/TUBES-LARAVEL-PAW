@@ -14,8 +14,8 @@
 Route::get('/newaccount', function () {
     return view('newaccount');
 });
-
 Route::get('/','con_mpr@index');
+Route::post('/sendEmail', 'Email@sendEmail');
 
 Route::group(['middleware' => 'revalidate'], function()
 {
