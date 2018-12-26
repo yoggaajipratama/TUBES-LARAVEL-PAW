@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Report') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('report') }}">
+                    <form enctype="multipart/form-data" method="post" action="{{route('report')}}">
                         @csrf
 
                         <div class="form-group row">
@@ -131,21 +131,12 @@
                                 @endif
                             </div>
                         </div>
-
+                        
                         <div class="form-group row">
-                            <label for="file_gambar" class="col-md-4 col-form-label text-md-right">{{ __('Foto') }}</label>
-
                             <div class="col-md-6">
-                                <input type="file" id="file_gambar" name="file_gambar">
-
-                                @if ($errors->has('file_gambar'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('file_gambar') }}</strong>
-                                    </span>
-                                @endif
+                                <input type="hidden" id="token" name="_token" value="{{csrf_token()}}">
                             </div>
                         </div>
-
 
                        <!--  <div class="form-group row {{$errors->has('jabatan')? 'has-error': ''}}">
                             <label class="col-md-4 col-form-label text-md-right">Jabatan</label>

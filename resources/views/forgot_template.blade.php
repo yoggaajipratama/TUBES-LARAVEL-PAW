@@ -245,7 +245,6 @@
                                                                 <hr>
                                                                 <center>
                                                                     <p>
-                                                                        Pesan telah diterima!
                                                                         <br>
                                                                         Terimakasih telah menghubungi kami!
                                                                     </p></center>

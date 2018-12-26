@@ -38,9 +38,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#about" class="page-scroll">About</a></li>
-              <li><a href="#services" class="page-scroll">Price list</a></li>
-              <li><a href="#portfolio" class="page-scroll">Gallery</a></li>
-              <li><a href="#contact" class="page-scroll">Contact</a></li>
+              <li><a href="#services" class="page-scroll">Daftar Harga</a></li>
+              <li><a href="#portfolio" class="page-scroll">Galeri</a></li>
+              <li><a href="#contact" class="page-scroll">Kontak Kami</a></li>
               <li><a href="{{route('login')}}" class="page-scroll"><img src="{{asset('/images/logo.svg')}}" width="32px">&nbsp;&nbsp;&nbsp;Login</a></li>
           </ul>
       </div>
@@ -54,7 +54,7 @@
           <div class="row">
             <div class="col-md-8 col-md-offset-2 intro-text">
               <h1>We Are Care<span></span></h1>
-              <p>KEPEDULIAN ANDA BERARTI BANYAK UNTUK LINGKUNGAN SEKITAR KITA</p>
+              <p class="btn btn-custom btn-lg page-scroll">Peduli lingkungan sekitar kita</p><br>
               <a href="{{route ('register')}}" class="btn btn-custom btn-lg page-scroll">Daftar Akun</a> </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
             <div class="list-style">
               <div class="col-lg-6 col-sm-6 col-xs-12">
                 <ul>
-                  <li>Report Harga</li>
+                  <li>Laporkan Harga</li>
                   <li>Daftar harga</li>
                 </ul>
               </div>
@@ -89,7 +89,7 @@
   <div id="services" class="text-center">
     <div class="container">
       <div class="section-title">
-        <h2>Price List</h2>
+        <h2>Daftar Harga</h2>
         <center>
           <table class="table table-bordered table-responsive">
             <tr>
@@ -106,7 +106,7 @@
                   <td>
                     <div class="text-center">Rp. {{$nama->harga}}</div>
                   </td>
-                  <td><center><a href="{{route('home')}}" class="link_report">report</a></center></td>
+                  <td><center><a href="{{route('home')}}" class="link_report"><img src="{{asset('/img/check.png')}}" class="check"></a></center></td>
                 <?php }?>
               </tr>
               @endforeach
@@ -120,7 +120,7 @@
   <div id="portfolio" class="text-center">
     <div class="container">
       <div class="section-title">
-        <h2>Gallery</h2>
+        <h2>Galeri</h2>
       </div>
 
       <div class="row">
@@ -225,34 +225,8 @@
       <div class="col-md-8">
         <div class="row">
           <div class="section-title">
-            <h2>Kirim email untuk saran</h2>
+            <h2>Kontak</h2>
           </div>
-
-          <form name="sentMessage" id="contactForm" novalidate>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" id="name" class="form-control" placeholder="Name" required="required">
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-          
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="email" id="email" class="form-control" placeholder="Email" required="required">
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-            </div>
-          
-            <div class="form-group">
-              <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
-              <p class="help-block text-danger"></p>
-            </div>
-          
-            <div id="success"></div>
-            <button type="submit" class="btn btn-custom btn-lg">Send Email</button>
-          </form>
         </div>
       </div>
 
@@ -263,11 +237,11 @@
         </div>
       
         <div class="contact-item">
-          <p><span><i class="fa fa-phone"></i> Phone</span> +62897653543</p>
+          <p><span><i class="fa fa-phone"></i> Phone</span> +6289609214064</p>
         </div>
       
         <div class="contact-item">
-          <p><span><i class="fa fa-envelope-o"></i> Email</span> mpr@company.com</p>
+          <p><span><i class="fa fa-envelope-o"></i> Email</span> marketpricereport@gmail.com</p>
         </div>
       </div>
     

@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title','Halaman Admin');
+@section('title','Lupa password');
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Lupa password</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,28 +15,13 @@
                     @endif
 
                     <div class="panel-body">
-                        <form action="{{ url('/sendEmail') }}" method="post">
+                        <form action="{{ url('/lupa_password') }}" method="post">
                             {{ csrf_field() }}
                             
                             <div class="form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control" id="email" name="email">
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="nama">Nama:</label>
-                                <input type="text" class="form-control" id="name" name="nama"/>
-                            </div>
-                            
-                            <!-- <div class="form-group">
-                                <label for="judul">Judul:</label>
-                                <input type="text" class="form-control" id="judul" name="judul"/>
-                            </div> -->
-                            
-                            <!-- <div class="form-group">
-                                <label for="pesan">Pesan:</label>
-                                <textarea class="form-control" id="pesan" name="pesan"></textarea>
-                            </div> -->
                             
                             <div class="form-group">
                                 <button type="submit" class="btn btn-md btn-primary">Send Email</button>

@@ -27,20 +27,20 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('Market Price Report.name', 'Market Price Report') }}
-                </a>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}">
+                                    {{ config('Market Price Report.name', 'Home') }}
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -76,5 +76,10 @@
             @yield('content')
         </main>
     </div>
+    <div id="footer">
+    <div class="container text-center">
+      <p>&copy; 2018 Market Price Report</p>
+    </div>
+  </div>
 </body>
 </html>
