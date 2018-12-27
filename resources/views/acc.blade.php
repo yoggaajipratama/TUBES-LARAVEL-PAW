@@ -64,7 +64,7 @@
         <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="d-xl-none d-lg-none" href="">Dashboard</a>
+                    <a class="d-xl-none d-lg-none" href="">Send Email</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -74,11 +74,10 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="{{route('laporan')}}">
+                                <a href="{{url('laporan')}}" class="nav-link active">
                                     <i class="fa fa-fw fa-user-circle"></i>Laporan
-                                    <span class="badge badge-success">6</span>
                                 </a>
-                                <a class="nav-link active" href="{{url('dashboard')}}">
+                                <a class="nav-link active" href="" >
                                     <i class="fa fa-fw fa-user-circle"></i>Kirim Email
                                     <span class="badge badge-success">6</span>
                                 </a>
@@ -104,43 +103,54 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">Data Masuk</h2><br><br>
+                                <h2 class="pageheader-title">Kirim otomatis</h2>
                                 <div class="container">
                                     <div class="row justify-content-center">
-                                        <h2>Data Laporan Diurutkan Berdasarkan Laporan terbaru</h2>
-                                        <table class="table">
-                                            <tr>
-                                                <thead>
-                                                    <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Email</th>
-                                                    <th>Pasar</th>
-                                                    <th>Nama Produk</th>
-                                                    <th>Keterangan</th>
-                                                    <th>Foto</th>
-                                                    <th>Terima</th>
-                                                </thead>
-                                                <?php $i=1; ?>
-                                                @foreach($image as $user)
-                                                <tbody>
-                                                    <td><?= $i++ ?></td>
-                                                    <td>{{($user -> name)}}</td>
-                                                    <td>{{($user -> email)}}</td>
-                                                    <td>{{($user -> alamat)}}</td>
-                                                    <td>{{($user -> nampro)}}</td>
-                                                    <td>{{($user -> ket)}}</td>
-                                                    <td>
-                                                        <img width="64px" height="64px" src="{{asset('/image/'.$user->image)}}">
-                                                    </td>
-                                                    <td><a href="{{url('/ACC')}}">ACC</a></td>
-                                                </tbody>
-                                                @endforeach
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card">
+                                                <div class="card-header">Dashboard</div>
+
+                                                <div class="card-body">
+                                                    @if (session('status'))
+                                                        <div class="alert alert-success" role="alert">
+                                                            {{ session('status') }}
+                                                        </div>
+                                                    @endif
+
+                                                <div class="panel-body">
+                                                    <form action="{{ url('/automatic') }}" method="post">
+                                                        {{ csrf_field() }}
+                                                        
+                                                        <div class="form-group">
+                                                            <label for="email">Email:</label>
+                                                            <select name="email">
+                                                                @foreach($email as $list)
+                                                                    <option value="{{($list->email)}}">{{($list->email)}} Dengan nama: {{($list->name)}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-md btn-primary">Send Email</button>
+                                                        </div>
+                                                        @if(\Session::has('alert-failed'))
+                                                            <div class="alert alert-failed">
+                                                                <div>{{Session::get('alert-failed')}}</div>
+                                                            </div>
+                                                        @endif
+                                                        @if(\Session::has('alert-success'))
+                                                            <div class="alert alert-success">
+                                                                <div>{{Session::get('alert-success')}}</div>
+                                                            </div>
+                                                        @endif
+                                                    </form>
+                                                 </div>
+                                            </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
                     </div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ class con_report extends Controller
         $validation = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'no_ktp' => ['required', 'max:16', 'unique:reports'],
+            'email' => ['required'],
             'no_tlp' => ['required', 'max:12'],
             'nampro' => ['required'],
             'harga' => ['required'],
@@ -32,6 +33,7 @@ class con_report extends Controller
 
         $report->name = $request->name;
         $report->no_ktp = $request->no_ktp;
+        $report->email = $request->email;
         $report->no_tlp = $request->no_tlp;
         $report->nampro = $request->nampro;
         $report->harga = $request->harga;
@@ -48,4 +50,6 @@ class con_report extends Controller
         return redirect('/member')->with('message', 'Successfuly');
 
     }
+
+    
 }

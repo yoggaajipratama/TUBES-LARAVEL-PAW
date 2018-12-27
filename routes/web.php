@@ -15,6 +15,7 @@ Route::group(['middleware' => 'revalidate'], function()
 	Auth::routes();
 	Route::get('/','con_mpr@index');
 	Route::post('/sendEmail', 'Email@sendEmail');
+	Route::post('/automatic', 'Email@otomatis');
 	Route::post('/newpassword', 'Auth\ForgotPasswordController@newpassword');
 	Route::post('/lupa_password', 'Email@forgot');
 	Route::get('/home', 'HomeController@index')->name('home');
@@ -27,6 +28,7 @@ Route::group(['middleware' => 'revalidate'], function()
 	Route::get('/new_password', function () {
     	return view('edit_password');
 	});
+	Route::get('/ACC','Email@list');
 });
 
 
