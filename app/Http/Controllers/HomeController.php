@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         if(Auth::user()->jabatan == 'ADMIN')
         {
-            return view('home');
+            return view('admin');
         }
         else{
             
@@ -42,7 +42,7 @@ class HomeController extends Controller
     {
         if(Auth::user()->jabatan == 'ADMIN')
         {
-            return view('home');
+            return view('admin');
         }
         else{
             
