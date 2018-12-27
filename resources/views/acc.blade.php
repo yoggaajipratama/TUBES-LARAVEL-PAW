@@ -125,8 +125,9 @@
                                                             <label for="email">Email:</label>
                                                             <select name="email">
                                                                 @foreach($email as $list)
-                                                                    <option value="{{($list->email)}}">{{($list->email)}} Dengan nama: {{($list->name)}}</option>
+                                                                    <option value="{{($list->email)}}">{{($list->email)}}</option>
                                                                 @endforeach
+                                                                @
                                                             </select>
                                                         </div>
                                                         

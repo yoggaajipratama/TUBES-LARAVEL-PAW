@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
@@ -26,11 +27,12 @@ class ForgotPasswordController extends Controller
 
         $users = new User();
         $users->email = $request->email;
-        $users->email = $request->password;
+        $users->password = $request->password;
 
         DB::table('users')
             ->where('email', $request->email)
-            ->update(['password' => md5($request->password)]);
+            ->update(['password' => Hash::make($request['password'])]);
+            return redirect('/');
 
     }
 }
