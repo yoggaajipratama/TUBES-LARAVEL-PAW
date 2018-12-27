@@ -16,32 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `gambar`
---
-
-DROP TABLE IF EXISTS `gambar`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `gambar` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nama_gambar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file_gambar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gambar`
---
-
-LOCK TABLES `gambar` WRITE;
-/*!40000 ALTER TABLE `gambar` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gambar` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `migrations`
 --
 
@@ -53,7 +27,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +36,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (35,'2014_10_12_000000_create_users_table',1),(36,'2014_10_12_100000_create_password_resets_table',1),(37,'2018_12_22_034218_create_reports_table',1),(38,'2018_12_22_105021_create_gambars_table',1);
+INSERT INTO `migrations` VALUES (54,'2018_12_22_105021_create_gambars_table',1),(97,'2014_10_12_000000_create_users_table',2),(98,'2014_10_12_100000_create_password_resets_table',2),(99,'2018_12_22_034218_create_reports_table',2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,10 +130,12 @@ CREATE TABLE `reports` (
   `tgl_kej` date NOT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `ket` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,6 +144,7 @@ CREATE TABLE `reports` (
 
 LOCK TABLES `reports` WRITE;
 /*!40000 ALTER TABLE `reports` DISABLE KEYS */;
+INSERT INTO `reports` VALUES (1,'yogga aji pratama',1167050168123456,89609214064,'Cabai Merah Besar (kg)',150000.00,'2018-12-10','Balubur','Cabai merah naik di pasar Balubur','yoggaajipratama99@gmail.com','rice2.jpg','2018-12-27 08:28:33','2018-12-27 08:28:33'),(2,'George',1167050168122456,89209214564,'Beras Kualitas Bawah I (kg)',185000.00,'2018-12-09','Pamoyanan','Beras mengalami kenaikan pak','yoggaajipratama999@gmail.com','rice1.jpg','2018-12-27 09:08:20','2018-12-27 09:08:20');
 /*!40000 ALTER TABLE `reports` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +167,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +176,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'administrator','admin@gmail.com',NULL,'$2y$10$2lncZxQKcJ3TgdEnyFJnve.BX.ZxXsbWTSjram3.mR9XeDOKYRHNi','ADMIN','hDQMZmsJ1DJjIyssfiQj0hOdTVcK4mzqDe1POhyEL13x8N9rMR1lfyrkHd12','2018-12-23 08:37:59','2018-12-23 08:37:59'),(2,'yogga aji','yoggaajipratama99@gmail.com',NULL,'$2y$10$VJJPKnAnU3opRXKgByzD4eMYPmMqtjABf/uXI7r4VwRVfK15b.5Aa','MEMBER','TZifCcDrGymRShFRGAPaVGq5SUjgWmZWs7JB8sjriuZv2YRaWAG8t7GnrjjX','2018-12-23 08:38:27','2018-12-23 08:38:27');
+INSERT INTO `users` VALUES (1,'yogga aji pratama','yoggaajipratama99@gmail.com',NULL,'$2y$10$VRa2yo12jQGoXQO2XsijvOmUHT7rlSIso9JXYGDUDfFYYbL0u.Jyi',NULL,'1fpJShe1vtrKFjMCRMYKooHecZCf845tdmRrWxhZLcJRBX1hLrszEHXDPQMf','2018-12-27 08:27:36','2018-12-27 08:27:36'),(2,'administrator','marketpricereport@gmail.com',NULL,'$2y$10$d09msuk9nyFD0j2UBBl71uQLBcImKFFzgZMo/tK19GbEdwsFS61.6','ADMIN','OX1vmqGp5vXAUnQVceXl6loJu0ujx5hFO05p1mMFesR4ANs88r1oSyBhdPwv','2018-12-27 08:30:52','2018-12-27 08:30:52'),(3,'George','yoggaajipratama999@gmail.com',NULL,'$2y$10$ySr8T3jwE0ypegojQO733.uri6GXsIcl63sl0gM9zfn.ixMmQGYba',NULL,'JZBlmnB78YYOB0iFekuAuY6zzXmGnv6So7wZnwUjBgIZjsfpnXALUWH8SKVf','2018-12-27 09:07:08','2018-12-27 09:07:08');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -212,4 +189,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-24 10:43:25
+-- Dump completed on 2018-12-27 23:50:51
