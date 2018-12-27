@@ -74,59 +74,14 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a href="{{url('laporan')}}" class="nav-link active">
+                                <a class="nav-link active" href="{{route('laporan')}}">
                                     <i class="fa fa-fw fa-user-circle"></i>Laporan
+                                    <span class="badge badge-success">6</span>
                                 </a>
-                                <a class="nav-link active" href="" >
+                                <a class="nav-link active" href="{{url('dashboard')}}">
                                     <i class="fa fa-fw fa-user-circle"></i>Kirim Email
                                     <span class="badge badge-success">6</span>
                                 </a>
-
-                                <!-- <div id="submenu-1" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">E-Commerce</a>
-                                            <div id="submenu-1-2" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="index.html">E Commerce Dashboard</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product.html">Product List</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-single.html">Product Single</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-checkout.html">Product Checkout</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Finance</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Sales</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>
-                                            <div id="submenu-1-1" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="dashboard-influencer.html">Influencer</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-finder.html">Influencer Finder</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-profile.html">Influencer Profile</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div> -->
                             </li>
                         </ul>
                     </div>
@@ -149,54 +104,37 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">Kirim Email Kepada Pengguna</h2>
+                                <h2 class="pageheader-title">Data Masuk</h2><br><br>
                                 <div class="container">
                                     <div class="row justify-content-center">
-                                        <div class="col-md-8">
-                                            <div class="card">
-                                                <div class="card-header">Dashboard</div>
-
-                                                <div class="card-body">
-                                                    @if (session('status'))
-                                                        <div class="alert alert-success" role="alert">
-                                                            {{ session('status') }}
-                                                        </div>
-                                                    @endif
-
-                                                <div class="panel-body">
-                                                    <form action="{{ url('/sendEmail') }}" method="post">
-                                                        {{ csrf_field() }}
-                                                        
-                                                        <div class="form-group">
-                                                            <label for="email">Email:</label>
-                                                            <input type="email" class="form-control" id="email" name="email">
-                                                        </div>
-                                                        
-                                                        <div class="form-group">
-                                                            <label for="nama">Nama:</label>
-                                                            <input type="text" class="form-control" id="name" name="nama"/>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button type="submit" class="btn btn-md btn-primary">Send Email</button>
-                                                        </div>
-                                                        @if(\Session::has('alert-failed'))
-                                                            <div class="alert alert-failed">
-                                                                <div>{{Session::get('alert-failed')}}</div>
-                                                            </div>
-                                                        @endif
-                                                        @if(\Session::has('alert-success'))
-                                                            <div class="alert alert-success">
-                                                                <div>{{Session::get('alert-success')}}</div>
-                                                            </div>
-                                                        @endif
-                                                    </form>
-                                                 </div>
-                                            </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
+                                        <h2>Data laporan Berdasarkan Laporan terbaru</h2>
+                                        <table class="table">
+                                            <tr>
+                                                <thead>
+                                                    <th>No</th>
+                                                    <th>Nama</th>
+                                                    <th>Alamat</th>
+                                                    <th>Nama Produk</th>
+                                                    <th>Foto</th>
+                                                </thead>
+                                                <?php $i=1; ?>
+                                                @foreach($image as $user)
+                                                <tbody>
+                                                    <td><?= $i++ ?></td>
+                                                    <td>{{($user -> name)}}</td>
+                                                    <td>{{($user -> alamat)}}</td>
+                                                    <td>{{($user -> nampro)}}</td>
+                                                    <td>
+                                                        <img width="64px" height="64px" src="{{asset('/image/'.$user->image)}}">
+                                                    </td>
+                                                </tbody>
+                                                @endforeach
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

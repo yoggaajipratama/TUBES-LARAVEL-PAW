@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Report;
 use App\Price;
+use Illuminate\Support\Facades\Hash;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -52,4 +54,38 @@ class HomeController extends Controller
         }
 
     }
+
+    public function laporan()
+    {
+        $image = DB::table('reports')
+            ->orderByRaw('id DESC')
+            ->get();
+        return view('laporan',['image'=>$image]);
+        return view('laporan');
+    }
+
+    public function dashboard()
+    {
+        return view('admin');
+
+    }
+    
+    public function view()
+    {
+        return view('akunadmin');
+    }
+
+    public function akunadmin(Request $request)
+    {
+        $user = new User();
+        
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->md5($request->password);
+        $user->jabatan = $request->jabatan;
+
+        $users->save();
+        return redirect('laporan');
+    }
+
 }

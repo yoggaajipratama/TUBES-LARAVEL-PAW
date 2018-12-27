@@ -39,7 +39,11 @@ class con_report extends Controller
         $report->alamat = $request->alamat;
         $report->ket = $request->ket;
 
+        $file       = $request->file('image');
+        $fileName   = $file->getClientOriginalName();
+        $request->file('image')->move("image/", $fileName);
 
+        $report->image = $fileName;
         $report->save();
         return redirect('/member')->with('message', 'Successfuly');
 

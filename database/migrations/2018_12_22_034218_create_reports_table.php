@@ -23,6 +23,7 @@ class CreateReportsTable extends Migration
             $table->date('tgl_kej');
             $table->text('alamat');
             $table->text('ket');
+            $table->string('image', 50);
             $table->timestamps();
         });
     }

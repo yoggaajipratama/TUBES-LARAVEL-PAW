@@ -1,4 +1,4 @@
-<?php
+c<?php
 
 namespace App\Http\Controllers;
 use Mail;

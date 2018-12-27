@@ -75,7 +75,7 @@
                             <label for="harga" class="col-md-4 col-form-label text-md-right">{{ __('Harga') }}</label>
 
                             <div class="col-md-6">
-                                <input id="harga" type="text" class="form-control{{ $errors->has('harga') ? ' is-invalid' : '' }}" name="harga" required>
+                                <input id="harga" type="text" class="form-control{{ $errors->has('harga') ? ' is-invalid' : '' }}" name="harga" max="1000000" required>
 
                                 @if ($errors->has('harga'))
                                     <span class="invalid-feedback" role="alert">
@@ -124,29 +124,38 @@
                             <div class="col-md-6">
                                 <textarea id="ket" type="text" class="form-control{{ $errors->has('ket') ? ' is-invalid' : '' }}" name="ket" required></textarea>
 
-                                @if ($errors->has('harga'))
+                                @if ($errors->has('ket'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('ket') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
+                            <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Foto') }}</label>
+
                             <div class="col-md-6">
-                                <input type="hidden" id="token" name="_token" value="{{csrf_token()}}">
+                                <input type="file" name="image">
+
+                                @if ($errors->has('image'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
-
-                       <!--  <div class="form-group row {{$errors->has('jabatan')? 'has-error': ''}}">
-                            <label class="col-md-4 col-form-label text-md-right">Jabatan</label>
-                            <div class="col-md-6">
-                                <select name="jabatan" class="form-control">
-                                    <option value="ADMIN">ADMIN</option>
-                                    <option value="MEMBER">MEMBER</option>
-                                </select>
+                        
+                        @if(\Session::has('alert-failed'))
+                            <div class="alert alert-failed">
+                                <div>{{Session::get('alert-failed')}}</div>
                             </div>
-                        </div> -->
+                        @endif
+                        @if(\Session::has('alert-success'))
+                            <div class="alert alert-success">
+                                <div>{{Session::get('alert-success')}}</div>
+                            </div>
+                        @endif
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

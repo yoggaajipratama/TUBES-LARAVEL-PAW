@@ -13,20 +13,23 @@
 Route::group(['middleware' => 'revalidate'], function()
 {
 	Auth::routes();
+	Route::get('/','con_mpr@index');
+	Route::post('/sendEmail', 'Email@sendEmail');
+	Route::post('/newpassword', 'Auth\ForgotPasswordController@newpassword');
+	Route::post('/lupa_password', 'Email@forgot');
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/member', 'HomeController@member');
 	Route::post('/report', 'con_report@save')->name('report');
-	
+	Route::get('/laporan','HomeController@laporan')->name('laporan');
+	Route::get('/dashboard','HomeController@dashboard')->name('dashboard');
+	Route::post('/create','HomeController@akunadmin')->name('create');
+	Route::get('/akunadmin','HomeController@view')->name('akunadmin');
 	Route::get('/new_password', function () {
     	return view('edit_password');
 	});
 });
 
 
-Route::post('/lupa_password', 'Email@forgot');
-Route::get('/','con_mpr@index');
-Route::post('/sendEmail', 'Email@sendEmail');
-Route::post('/newpassword', 'Auth\ForgotPasswordController@newpassword');
 
 Route::get('/newaccount', function () {
     return view('newaccount');
